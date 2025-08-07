@@ -1,0 +1,17 @@
+[theme]
+base="light"
+primaryColor="#5c8a5e"
+backgroundColor="#f3f9f1"
+secondaryBackgroundColor="#d2ecd2"
+textColor="#1e3d1e"
+font="sans serif"
+
+[server]
+headless = true
+enableCORS = false
+
+[client]
+toolbarMode = "minimal"
+
+[app]
+title = "PlantSync 🌿"
