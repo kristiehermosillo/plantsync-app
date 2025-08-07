@@ -13,10 +13,19 @@ custom_css = ""
 if theme == "Dark":
     custom_css = """
         <style>
-        body { background-color: #1e1e1e; color: white; }
-        .stApp { background-color: #1e1e1e; }
+        .stApp {
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+        h1, h2, h3, h4, h5, h6, .markdown-text-container {
+            color: #f0f0f0 !important;
+        }
+        .stMarkdown p {
+            color: #dcdcdc !important;
+        }
         </style>
     """
+
 elif theme == "Spring Green":
     custom_css = """
         <style>
