@@ -8,7 +8,7 @@ from utils import load_data, save_data
 st.set_page_config(page_title="PlantSync", layout="wide")
 
 # ---- Theme Selector ----
-theme = st.selectbox("Choose Theme", ["Light", "Midnight", "Spring Green", "Desert Tan"])
+theme = st.selectbox("Choose Theme", ["Light", "Midnight", "Spring Green", "Desert Tan", "Sunset Orange"])
 custom_css = ""
 if theme == "Midnight":
     custom_css = """
@@ -35,6 +35,21 @@ elif theme == "Desert Tan":
     custom_css = """
         <style>
         .stApp { background-color: #f9f3df; }
+        </style>
+    """
+elif theme == "Sunset Orange":
+    custom_css = """
+        <style>
+        .stApp {
+            background-color: #fff2e6;
+            color: #332211;
+        }
+        h1, h2, h3, h4, h5, h6, .markdown-text-container {
+            color: #cc5500 !important;
+        }
+        .stMarkdown p {
+            color: #553311 !important;
+        }
         </style>
     """
 
