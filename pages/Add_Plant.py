@@ -3,6 +3,7 @@ from utils import load_data, save_data
 from datetime import datetime, timedelta
 
 st.title("🌱 Add a New Plant")
+st.markdown(custom_css, unsafe_allow_html=True)
 
 data = load_data()
 
