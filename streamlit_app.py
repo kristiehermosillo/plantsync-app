@@ -8,7 +8,7 @@ from utils import load_data, save_data
 st.set_page_config(page_title="PlantSync", layout="wide")
 
 # ---- Theme Selector ----
-theme = st.selectbox("Choose Theme", ["Light", "Dark", "Spring Green", "Desert Tan"])
+theme = st.selectbox("Choose Theme", ["Light", "Midnight", "Spring Green", "Desert Tan"])
 custom_css = ""
 if theme == "Dark":
     custom_css = """
