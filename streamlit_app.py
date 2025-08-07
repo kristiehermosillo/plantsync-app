@@ -25,7 +25,6 @@ if theme == "Dark":
         }
         </style>
     """
-
 elif theme == "Spring Green":
     custom_css = """
         <style>
