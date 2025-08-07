@@ -10,7 +10,7 @@ st.set_page_config(page_title="PlantSync", layout="wide")
 # ---- Theme Selector ----
 theme = st.selectbox("Choose Theme", ["Light", "Midnight", "Spring Green", "Desert Tan", "Sunset Orange"])
 custom_css = ""
-elif theme == "Midnight":
+if theme == "Midnight":
     custom_css = """
         <style>
         .stApp {
