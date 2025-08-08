@@ -1,6 +1,11 @@
 import streamlit as st
 from utils import load_data
 from datetime import datetime
+from utils import get_theme_css
+
+theme = st.session_state.get("theme", "Light")
+custom_css = get_theme_css(theme)
+st.markdown(custom_css, unsafe_allow_html=True)
 
 st.title("📆 Calendar View")
 
