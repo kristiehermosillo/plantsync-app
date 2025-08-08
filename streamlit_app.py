@@ -119,7 +119,10 @@ elif theme == "Sunset Orange":
     """
 
 
+st.session_state["theme"] = theme
+st.session_state["custom_css"] = custom_css
 st.markdown(custom_css, unsafe_allow_html=True)
+
 
 st.title("🌿 PlantSync Dashboard")
 
