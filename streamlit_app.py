@@ -7,118 +7,67 @@ from utils import load_data, save_data
 
 st.set_page_config(page_title="PlantSync", layout="wide")
 
-# ---- Theme Selector ----
-theme = st.selectbox("Choose Theme", ["Light", "Midnight", "Spring Green", "Desert Tan", "Sunset Orange"])
+# ---- Theme Selector with session default ----
+options = ["Light", "Midnight", "Spring Green", "Desert Tan", "Sunset Orange"]
+
+# read previously chosen theme from session or default to Light
+current_theme = st.session_state.get("theme", "Light")
+if current_theme not in options:
+    current_theme = "Light"
+
+# make the select box show the saved choice
+theme = st.selectbox(
+    "Choose Theme",
+    options,
+    index=options.index(current_theme)
+)
+
+# build CSS for the selected theme
 custom_css = ""
 if theme == "Midnight":
     custom_css = """
         <style>
-        .stApp {
-            background-color: #1e1e24;
-            color: #f0f0f0;
-        }
-
-        /* Sidebar background */
-        section[data-testid="stSidebar"] {
-            background-color: #262630;
-        }
-
-        /* Sidebar text + links */
-        section[data-testid="stSidebar"] * {
-            color: #f0f0f0 !important;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover effect for sidebar items */
-        .css-1d391kg:hover, .css-16idsys:hover {
-            background-color: #33334d !important;
-            border-radius: 5px;
-        }
-
-        /* Highlight active tab (optional) */
-        .css-17lntkn {
-            background-color: #40405a !important;
-            border-left: 4px solid #cc5500;
-            border-radius: 5px;
-        }
-
-        h1, h2, h3, h4, h5, h6, .markdown-text-container {
-            color: #ffffff !important;
-        }
-
-        .stMarkdown p {
-            color: #dcdcdc !important;
-        }
+        .stApp { background-color: #1e1e24; color: #f0f0f0; }
+        section[data-testid="stSidebar"] { background-color: #262630; }
+        section[data-testid="stSidebar"] * { color: #f0f0f0 !important; transition: all 0.3s ease; }
+        .css-1d391kg:hover, .css-16idsys:hover { background-color: #33334d !important; border-radius: 5px; }
+        .css-17lntkn { background-color: #40405a !important; border-left: 4px solid #cc5500; border-radius: 5px; }
+        h1, h2, h3, h4, h5, h6, .markdown-text-container { color: #ffffff !important; }
+        .stMarkdown p { color: #dcdcdc !important; }
         </style>
     """
-
 elif theme == "Spring Green":
     custom_css = """
         <style>
-        .stApp {
-            background-color: #d5f5dc;
-            color: #1e4620;
-        }
-        section[data-testid="stSidebar"] {
-            background-color: #b8e6c2;
-        }
-        section[data-testid="stSidebar"] .css-1cpxqw2 {
-            color: #1e4620;
-        }
-        h1, h2, h3, h4, h5, h6, .markdown-text-container {
-            color: #1e4620 !important;
-        }
-        .stMarkdown p {
-            color: #2c5f30 !important;
-        }
+        .stApp { background-color: #d5f5dc; color: #1e4620; }
+        section[data-testid="stSidebar"] { background-color: #b8e6c2; }
+        section[data-testid="stSidebar"] * { color: #1e4620 !important; }
+        h1, h2, h3, h4, h5, h6, .markdown-text-container { color: #1e4620 !important; }
+        .stMarkdown p { color: #2c5f30 !important; }
         </style>
     """
-
 elif theme == "Desert Tan":
     custom_css = """
         <style>
-        .stApp {
-            background-color: #f9f3df;
-            color: #4a3620;
-        }
-        section[data-testid="stSidebar"] {
-            background-color: #f3e8c9;
-        }
-        section[data-testid="stSidebar"] .css-1cpxqw2 {
-            color: #4a3620;
-        }
-        h1, h2, h3, h4, h5, h6, .markdown-text-container {
-            color: #5a3e1b !important;
-        }
-        .stMarkdown p {
-            color: #5a3e1b !important;
-        }
+        .stApp { background-color: #f9f3df; color: #4a3620; }
+        section[data-testid="stSidebar"] { background-color: #f3e8c9; }
+        section[data-testid="stSidebar"] * { color: #4a3620 !important; }
+        h1, h2, h3, h4, h5, h6, .markdown-text-container { color: #5a3e1b !important; }
+        .stMarkdown p { color: #5a3e1b !important; }
         </style>
     """
-
 elif theme == "Sunset Orange":
     custom_css = """
         <style>
-        .stApp {
-            background-color: #fff2e6;
-            color: #332211;
-        }
-        section[data-testid="stSidebar"] {
-            background-color: #ffe5cc;
-        }
-        section[data-testid="stSidebar"] .css-1cpxqw2 {
-            color: #553311;
-        }
-        h1, h2, h3, h4, h5, h6, .markdown-text-container {
-            color: #cc5500 !important;
-        }
-        .stMarkdown p {
-            color: #553311 !important;
-        }
+        .stApp { background-color: #fff2e6; color: #332211; }
+        section[data-testid="stSidebar"] { background-color: #ffe5cc; }
+        section[data-testid="stSidebar"] * { color: #553311 !important; }
+        h1, h2, h3, h4, h5, h6, .markdown-text-container { color: #cc5500 !important; }
+        .stMarkdown p { color: #553311 !important; }
         </style>
     """
 
-
+# save selection and css for other pages, then apply it here
 st.session_state["theme"] = theme
 st.session_state["custom_css"] = custom_css
 st.markdown(custom_css, unsafe_allow_html=True)
