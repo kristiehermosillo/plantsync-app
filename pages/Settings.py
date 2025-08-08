@@ -1,10 +1,8 @@
 import streamlit as st
 from utils import load_data, save_data
-from utils import get_theme_css
 
-theme = st.session_state.get("theme", "Light")
-custom_css = get_theme_css(theme)
-st.markdown(custom_css, unsafe_allow_html=True)
+# apply CSS saved by the main page
+st.markdown(st.session_state.get("custom_css", ""), unsafe_allow_html=True)
 
 st.title("⚙️ Settings")
 
