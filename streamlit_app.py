@@ -7,6 +7,14 @@ from utils import load_data, save_data
 
 st.set_page_config(page_title="PlantSync", layout="wide")
 
+st.sidebar.markdown(
+    """
+    <div style="font-weight:700;font-size:20px; margin:8px 0 16px 0;">Dashboard</div>
+    <hr style="border:none;height:1px;background:#3a3a3a33;margin:0 0 12px 0;">
+    """,
+    unsafe_allow_html=True,
+)
+
 # ---- Theme Selector with session default ----
 options = ["Light", "Midnight", "Spring Green", "Desert Tan", "Sunset Orange"]
 
