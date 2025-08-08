@@ -28,14 +28,41 @@ if theme == "Midnight":
     custom_css = """
         <style>
         .stApp { background-color: #1e1e24; color: #f0f0f0; }
+
+        /* Sidebar background */
         section[data-testid="stSidebar"] { background-color: #262630; }
+
+        /* Sidebar text + links */
         section[data-testid="stSidebar"] * { color: #f0f0f0 !important; transition: all 0.3s ease; }
+
+        /* Hover effect for sidebar items */
         .css-1d391kg:hover, .css-16idsys:hover { background-color: #33334d !important; border-radius: 5px; }
+
+        /* Highlight active tab */
         .css-17lntkn { background-color: #40405a !important; border-left: 4px solid #cc5500; border-radius: 5px; }
+
+        /* Headings */
         h1, h2, h3, h4, h5, h6, .markdown-text-container { color: #ffffff !important; }
         .stMarkdown p { color: #dcdcdc !important; }
+
+        /* Form labels */
+        label, .stTextInput label, .stNumberInput label, .stTextArea label {
+            color: #f0f0f0 !important;
+        }
+
+        /* Input fields text color */
+        input, textarea {
+            color: #000000 !important;
+            background-color: #d0f0d0 !important;
+        }
+
+        /* File uploader text */
+        .stFileUploader div {
+            color: #000000 !important;
+        }
         </style>
     """
+
 elif theme == "Spring Green":
     custom_css = """
         <style>
